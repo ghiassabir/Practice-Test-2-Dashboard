@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const fileUrls = {
         submissions: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSxW6lYLIfH1r9954znKNbcE90y5qit38yhhyhZnTv_pMCM46H6DdFzQ5ekkJbqtAwfwVBbNegOVzmU/pub?gid=0&single=true&output=csv',
         scoring: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-2-Dashboard/main/scoring/Raw_to_Scaled_Conversion_table_RW.json',
-        eng1: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-2-Dashboard/main/metadata/PT-T1-RW-M1.json',
-        eng2: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-2-Dashboard/main/metadata/PT-T1-RW-M2.json',
-        math1: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-2-Dashboard/main/metadata/PT-T1-MT-M1.json',
-        math2: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-2-Dashboard/main/metadata/PT-T1-MT-M2.json',
+        eng1: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-2-Dashboard/main/metadata/PT-T2-RW-M1.json',
+        eng2: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-2-Dashboard/main/metadata/PT-T2-RW-M2.json',
+        math1: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-2-Dashboard/main/metadata/PT-T2-MT-M1.json',
+        math2: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-2-Dashboard/main/metadata/PT-T2-MT-M2.json',
     };
 
     const modulesConfig = {
