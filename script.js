@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     // ACTION REQUIRED: Replace these placeholder URLs with the actual "Raw" URLs from your GitHub repository.
     const fileUrls = {
         submissions: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSxW6lYLIfH1r9954znKNbcE90y5qit38yhhyhZnTv_pMCM46H6DdFzQ5ekkJbqtAwfwVBbNegOVzmU/pub?gid=0&single=true&output=csv',
-        scoring: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-1-Dashboard/main/scoring/Raw_to_Scaled_Conversion_table_RW.json',
-        eng1: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-1-Dashboard/main/metadata/PT-T1-RW-M1.json',
-        eng2: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-1-Dashboard/main/metadata/PT-T1-RW-M2.json',
-        math1: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-1-Dashboard/main/metadata/PT-T1-MT-M1.json',
-        math2: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-1-Dashboard/main/metadata/PT-T1-MT-M2.json',
+        scoring: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-2-Dashboard/main/scoring/Raw_to_Scaled_Conversion_table_RW.json',
+        eng1: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-2-Dashboard/main/metadata/PT-T1-RW-M1.json',
+        eng2: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-2-Dashboard/main/metadata/PT-T1-RW-M2.json',
+        math1: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-2-Dashboard/main/metadata/PT-T1-MT-M1.json',
+        math2: 'https://raw.githubusercontent.com/ghiassabir/Practice-Test-2-Dashboard/main/metadata/PT-T1-MT-M2.json',
     };
 
     const modulesConfig = {
@@ -85,8 +85,8 @@ function parseCSV(text) {
     function processScoringData(scoringArray) {
         const lookupTables = { RW: {}, Math: {} };
         const rawScoreKey = "Raw Score (# of Correct Answers)";
-        const rwScaledScoreKey = "Test 1 RW Lower";
-        const mathScaledScoreKey = "Test 1 Math Lower";
+        const rwScaledScoreKey = "Test 2 RW Lower";
+        const mathScaledScoreKey = "Test 2 Math Lower";
         scoringArray.forEach(row => {
             const rawScore = row[rawScoreKey];
             if (row[rwScaledScoreKey] !== undefined) {
