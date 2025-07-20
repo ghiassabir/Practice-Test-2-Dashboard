@@ -225,7 +225,7 @@ function parseCSV(text) {
         console.error("Failed to load or process diagnostic data:", error);
         feedbackContent.innerHTML = `<p style="color:red;">Error: Could not load data. Please check the console for details and ensure all GitHub URLs are correct.</p>`;
     }
-
+/*
     function displayFeedback(q) {
         // This function remains the same as the previous version
         const feedbackContent = document.getElementById('feedback-content');
@@ -262,5 +262,55 @@ function parseCSV(text) {
 
         feedbackContent.innerHTML = html;
         document.getElementById('feedback-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } */
+
+function displayFeedback(q) {
+    const feedbackContent = document.getElementById('feedback-content');
+    const statusClass = q.is_correct ? 'status-correct' : (q.student_answer === undefined ? '' : 'status-incorrect');
+    const statusText = q.is_correct ? 'Correct' : (q.student_answer === undefined ? 'Unanswered' : 'Incorrect');
+
+    const getChoiceLetter = (answerValue) => {
+        if (!answerValue) return "N/A";
+        if (q.option_a === answerValue) return 'A';
+        if (q.option_b === answerValue) return 'B';
+        if (q.option_c === answerValue) return 'C';
+        if (q.option_d === answerValue) return 'D';
+        if (q.option_e === answerValue) return 'E';
+        return answerValue;
+    };
+    
+    const correctChoiceLetter = getChoiceLetter(q.correct_answer);
+
+    let questionDisplay = '';
+    if (q.passage_content) {
+        questionDisplay += `<p><em>${q.passage_content.replace(/______/g, '______')}</em></p>`;
     }
+    questionDisplay += `<p><b>${q.question_stem || ''}</b></p>`;
+
+    // Correctly format the explanation text for HTML display
+    const explanationText = (q.explanation_ai_enhanced || q.explanation_original || 'Explanation not available.').replace(/\n/g, '<br />');
+
+    let html = `
+        <p><span class="${statusClass}">${statusText}</span></p>
+        <p><strong>Question:</strong> ${q.question_number} (Module: ${q.module})</p>
+        <div class="question-text">${questionDisplay}</div>
+        <p><strong>Your Choice:</strong> ${q.student_answer || "Not Answered"}</p>
+        <p><strong>Correct Choice:</strong> ${correctChoiceLetter} (${q.correct_answer})</p>
+        <p><strong>Explanation:</strong></p>
+        <div class="explanation-text">${explanationText}</div>
+    `;
+    
+    // Set the HTML content first
+    feedbackContent.innerHTML = html;
+
+    // **CRITICAL STEP**: After setting the content, tell MathJax to find and render the math notations
+    if (window.MathJax) {
+        window.MathJax.typesetPromise([feedbackContent])
+            .catch((err) => console.log('MathJax typesetting failed: ', err));
+    }
+
+    document.getElementById('feedback-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+    
 });
